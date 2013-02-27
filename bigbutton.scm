@@ -10,6 +10,7 @@
   (if (string? data) `((content . ,data)) data))
 
 (define (show-dev-mode?)
+  ;;TODO: Only on localhost
   (development-mode?))
 
 ;; Fill the template with the given data
