@@ -1,4 +1,4 @@
-(use awful)
+(use awful spiffy)
 (include "ezersatz.scm")
 (import ezersatz)
 
@@ -10,8 +10,8 @@
   (if (string? data) `((content . ,data)) data))
 
 (define (show-dev-mode?)
-  ;;TODO: Only on localhost
-  (development-mode?))
+  (and (member (remote-address) '("127.0.0.1"))
+       (development-mode?)))
 
 ;; Fill the template with the given data
 (define (standard-page data #!optional (file "index.tmpl") (page-title "BigButton"))
@@ -26,7 +26,7 @@
 
 (define-page (main-page-path)
   (lambda () 
-    (let* ([whom ($ 'whom "world")]
+    (let* ([whom ($ 'whom "World")]
 	   [greeting (get-greeting-string "Hello" whom)])
       (debug whom)
       (standard-page greeting))))
