@@ -5,7 +5,7 @@
 (enable-sxml #f)
 
 ;; Fill the template with the given data
-(define (standard-page data #!optional (file "index.html") (page-title "BigButton"))
+(define (standard-page data #!optional (file "index.tmpl") (page-title "BigButton"))
   (ezersatz file
 	    (if (string? data) `((content . ,data) (page_title . ,page-title))
 		               (alist-cons 'page_title page-title data))))
@@ -14,6 +14,4 @@
   (string-append salutation ", " name))
 
 (define-page (main-page-path)
-  (lambda ()
-      (standard-page
-	(get-greeting-string "Hello" ($ 'person "world")))))
+  (standard-page (get-greeting-string "Hello" ($ 'whom "world"))))
