@@ -14,7 +14,7 @@
        (development-mode?)))
 
 ;; Fill the template with the given data
-(define (standard-page data #!optional (file "index.tmpl") (page-title "BigButton"))
+(define (standard-page data #!key (file "index.tmpl") (page-title "BigButton"))
     (ezersatz file
 	      (let* ([data (as-model data)]
 		     [data (alist-cons 'page_title page-title data)]
@@ -29,4 +29,4 @@
     (let* ([whom ($ 'whom "World")]
 	   [greeting (get-greeting-string "Hello" whom)])
       (debug whom)
-      (standard-page greeting))))
+      (standard-page greeting page-title: "Big Button Homepage"))))
