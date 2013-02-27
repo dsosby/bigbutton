@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="stylesheets/base.css">
 	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,7 +37,10 @@
 
 	{% if devmode %}
 	<div id="dev-mode-container">
-	  You are in dev mode. Congrats!
+	  <ul>
+	    <li><a href="/reload" target="#">Reload</a></li>
+	    <li><a href="/web-repl" target="#">REPL</a></li>
+	  </ul>
 	</div>
 	{% endif %}
 </body>
