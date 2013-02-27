@@ -18,7 +18,7 @@
     (ezersatz file
 	      (let* ([data (as-model data)]
 		     [data (alist-cons 'page_title page-title data)]
-		     [data (if (show-dev-mode?) (alist-cons 'devmode #t data))])
+		     [data (if (show-dev-mode?) (alist-cons 'devmode #t data) data)])
 		data)))
 
 (define (get-greeting-string salutation #!optional [name "World"])
