@@ -3,6 +3,7 @@
 
 (import scheme chicken)
 (require-extension ersatz-lib)
+(reexport ersatz-lib)
 
 (define get-std-template-env (make-parameter (template-std-env)))
 

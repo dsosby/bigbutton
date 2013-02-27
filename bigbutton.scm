@@ -6,11 +6,19 @@
 (when (development-mode?)
   (debug-file "debug.log"))
 
+(define (as-model data)
+  (if (string? data) `((content . ,data)) data))
+
+(define (show-dev-mode?)
+  (development-mode?))
+
 ;; Fill the template with the given data
 (define (standard-page data #!optional (file "index.tmpl") (page-title "BigButton"))
     (ezersatz file
-	      (if (string? data) `((content . ,data) (page_title . ,page-title))
-				 (alist-cons 'page_title page-title data))))
+	      (let* ([data (as-model data)]
+		     [data (alist-cons 'page_title page-title data)]
+		     [data (if (show-dev-mode?) (alist-cons 'devmode #t data))])
+		data)))
 
 (define (get-greeting-string salutation #!optional [name "World"])
   (string-append salutation ", " name))

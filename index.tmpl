@@ -26,7 +26,6 @@
 
 </head>
 <body>
-
 	<div class="container">
 		<div class="sixteen columns">
 			<h1 class="remove-bottom" style="margin-top: 40px">{{ page_title }}</h1>
@@ -34,5 +33,11 @@
 			{{ content }}
 		</div>
 	</div>
+
+	{% if devmode %}
+	<div id="dev-mode-container">
+	  You are in dev mode. Congrats!
+	</div>
+	{% endif %}
 </body>
 </html>
